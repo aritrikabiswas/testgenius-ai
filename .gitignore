@@ -1,0 +1,47 @@
+# macOS
+.DS_Store
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# JavaScript / React / Node
+node_modules/
+dist/
+build/
+.vite/
+coverage/
+
+# Java / Maven / Gradle
+target/
+.gradle/
+*.class
+
+# Rust
+**/target/
+
+# IDE
+.idea/
+.vscode/
+
+# Logs and temporary files
+*.log
+*.tmp
+
+# Generated test artifacts
+artifacts/
+test-results/
