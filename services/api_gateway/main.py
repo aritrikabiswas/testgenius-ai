@@ -1,23 +1,34 @@
 
 from fastapi import FastAPI, HTTPException, status
+
 from sqlalchemy import text
 from sqlalchemy.exc import SQLAlchemyError
 
 from services.api_gateway.api.v1.endpoints.organizations import (
     router as organizations_router,
 )
+
 from services.api_gateway.api.v1.endpoints.requirements import (
     router as requirements_router,
 )
+
+from services.api_gateway.api.v1.endpoints.failures import (
+    router as failures_router,
+)
+
 from services.api_gateway.core.config import get_settings
 from services.api_gateway.db.database import engine
+
 
 settings = get_settings()
 
 app = FastAPI(
     title=settings.app_name,
     version=settings.app_version,
-    description="TestGenius AI - Autonomous Selenium Testing and Intelligent Debugging Platform",
+    description=(
+        "TestGenius AI - Autonomous Selenium Testing "
+        "and Intelligent Debugging Platform"
+    ),
 )
 
 
@@ -34,6 +45,14 @@ app.include_router(
     requirements_router,
     prefix="/api/v1/requirements",
     tags=["Requirements"],
+)
+
+
+# Failure Analysis API
+app.include_router(
+    failures_router,
+    prefix="/api/v1/failures",
+    tags=["Failure Analysis"],
 )
 
 
